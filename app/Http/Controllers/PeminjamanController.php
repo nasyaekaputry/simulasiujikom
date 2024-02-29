@@ -6,7 +6,7 @@ use App\Models\Buku;
 use Illuminate\Http\Request;
 use App\Models\Peminjaman;
 use App\Models\User;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class PeminjamanController extends Controller
 {
     public function index()
@@ -45,8 +45,21 @@ class PeminjamanController extends Controller
         $peminjaman->status = 'Dikembalikan';
         $peminjaman->save();
 
-        return redirect()->route('peminjaman.index')->with('success', 'Buku berhasil dikembalikan');
+        return redirect()->route('peminjaman')->with('success', 'Buku berhasil dikembalikan');
     }
 
-    
+    public function print(){
+        $user = User::all();
+        $buku = Buku::all();
+        $peminjaman = Peminjaman::all();
+        $data = [
+            'user' => $user,
+            'buku'  => $buku,
+            'peminjaman' => $peminjaman,
+        ];
+        $pdf = PDF::loadView('format', $data)
+        ->setPaper('a4');
+        return $pdf->download('Laporan.pdf');
+        
+    }
 }

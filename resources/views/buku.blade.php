@@ -20,12 +20,12 @@
                                         <th scope="col">Penulis</th>
                                         <th scope="col">Penerbit</th>
                                         <th scope="col">Tahun</th>
-                                        <th scope="col">Kategori</th>
+                                      
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($buku as $b)
+                                    @forelse ($buku as $b)
                                     <tr>
                                         <td>
                                             <img src="{{ asset('storage/'.$b->foto) }}" alt="Foto Buku" width="100">
@@ -34,15 +34,24 @@
                                         <td>{{ $b->penulis }}</td>
                                         <td>{{ $b->penerbit }}</td>
                                         <td>{{ $b->tahun_terbit }}</td>
-                                        <td>
-                                            @foreach ($b->kategoribukurelasi as $kategoribuku)
-                                                @if ($kategoribuku->kategori)
-                                                    {{ $kategoribuku->kategori->nama_kategori }}<br>
-                                                @endif
-                                            @endforeach
+                                            <td>
+                                        <form method="post" action="{{route('buku.destroy', $b->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type ="submit" class="btn btn-danger">Hapus <i class="fa fa-trash"></i></button>
+                                               
+                                           
+
+                                                <a class="btn btn-warning"href="{{route('buku.edit', $b->id)}}">
+                                                    edit<i class="fa fa-file-pen"></i></a>
+                                            </form>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                   @empty
+                                </tr>
+                                <td colspan="6" class="text-center">Tidak ada data buku.</td>
+                            </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
@@ -51,4 +60,4 @@
             </div>
         </div>
     </div>
-@endsection
+    @endsection

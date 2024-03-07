@@ -48,6 +48,7 @@ class BukuController extends Controller
     public function edit($id){
         $buku = Buku::findOrFail($id);
         return view ('buku_edit', ['buku'=>$buku]);
+
     }
     public function update(Request $request, $id){
         $request->validate([
@@ -68,7 +69,17 @@ class BukuController extends Controller
         // Kategori::find($id)->destroy();
         $buku = Buku::find($id);
         $buku->delete();
-
         return redirect('/buku');
+
     }
+        public function welcome(){
+        $buku = Buku::all();
+        return view ('welcome', ['buku'=>$buku]);
+        
+    }
+    
+
+    
+      
 }
+

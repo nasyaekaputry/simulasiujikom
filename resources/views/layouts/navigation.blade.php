@@ -29,6 +29,13 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('peminjaman.index')" :active="request()->routeIs('peminjaman.index')">
                         {{ __('Data Peminjaman') }}
+                    </div>
+                    @endrole
+@role('user')
+<div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+    <x-nav-link :href="route('peminjaman.index')" :active="request()->routeIs('peminjaman.index')">
+        {{ __('Data Peminjaman') }}
+
                     </x-nav-link>
                 </div>
 

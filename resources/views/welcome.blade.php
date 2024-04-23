@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Perpustakaan</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -82,7 +82,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$b->judul}}</h5>
                         <p class="card-text">{{$b->deskripsi}}</p>
-                        <a href="#" class="btn btn-primary">Detail Buku</a>
+                        <a href="#" class="btn btn-success">Detail Buku</a>
                     </div>
                 </div>
             </div>

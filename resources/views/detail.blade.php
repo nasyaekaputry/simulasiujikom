@@ -13,7 +13,7 @@
                         </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">
-                                <thead class="bg-primary text-white">
+                                <thead class="bg-secondary.bg-gradient text-white">
                                     <tr>
                                         <th scope="col">Foto</th>
                                         <th scope="col">Judul</th>

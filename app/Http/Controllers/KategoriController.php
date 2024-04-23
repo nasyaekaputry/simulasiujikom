@@ -38,7 +38,7 @@ class KategoriController extends Controller
         ]);
         return redirect('/kategori');     
     }
-    public function destroy($id){
+    public function delete($id){
         // Kategori::find($id)->destroy();
         $kategori = Kategori::find($id);
         $kategori->delete();
